@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: sample-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    #nginx.ingress.kubernetes.io/permanent-redirect: "http://cloudev.koreacentral.cloudapp.azure.com"
+    #nginx.ingress.kubernetes.io/use-port-in-redirects: "true"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /sample
+        path: /sample(/|$)(.*)
+        pathType: Prefix
+        backend:
+          serviceName: sample-api
+          servicePort: 5678

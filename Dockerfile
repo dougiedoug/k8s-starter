@@ -14,4 +14,4 @@ RUN apk --no-cache add --virtual .build-deps \
 
 COPY ./sample ./sample
 
-CMD ["uvicorn", "sample.main:app", "--port=5678"]
+CMD ["uvicorn", "sample.main:app", "--port=5678", "--host=0.0.0.0"]
